@@ -1,0 +1,34 @@
+<h1>Procurar Nome</h1>
+
+<?php
+$title = $form->get('title');
+$title->setAttribute('class', 'form-control');
+
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+
+$form->setAttribute('action', $this->url('post', ['action' => 'procurar']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+
+<div class="form-group">
+    <?= $this->formLabel($title); ?>
+    <?= $this->formElement($title); ?>
+</div>
+
+<p>
+<?php
+echo $this->formSubmit($submit);
+?>
+</p>
+<a class="btn btn-primary" href="<?= $this->url('post', ['action' => 'index']);?>">Tela Inicial</a>
+</p>
+<?php
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag(); //Vai dar um barra em nosso form, vai fechar o nosso form
+?>
+

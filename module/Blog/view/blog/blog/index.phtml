@@ -1,0 +1,31 @@
+<?php
+$this->headTitle('Tarefas');
+?>
+<h1>Tarefas</h1>
+<p>
+    <a class='btn btn-success' href="<?= $this->url('post', ['action' => 'add']); ?>">Nova Tarefa</a>
+    <a class='btn btn-primary' href="blog.json">Ordenar por Nome (Json)</a>
+    <a class='btn btn-primary' href="<?= $this->url('post', ['action' => 'procurar']); ?>">Procurar Tarefas por Nome (Json)</a>
+    <a class='btn btn-primary' href="<?= $this->url('post', ['action' => 'procurarid']); ?>">Procurar Tarefas por Id (Json)</a>
+</p>
+<table class="table">
+
+    <tr>
+        <th>Tarefas</th>
+        <th>Dados</th>           
+    </tr>
+    <?php foreach ($posts as $post): ?>
+
+        <tr>
+            <td><?= $this->escapeHtml($post->id); ?></td>
+            <td><?= $this->escapeHtml($post->title); ?></td>
+            <td><?= $this->escapeHtml($post->content); ?></td>
+            <td>
+                <a class="btn btn-warning" href="<?= $this->url('post', ['action' => 'edit', 'id' => $post->id]); ?>">Editar</a>
+                <a class="btn btn-danger" href="<?= $this->url('post', ['action' => 'delete', 'id' => $post->id]); ?>">Deletar</a>
+
+            </td>
+
+        </tr>
+    <?php endforeach; ?>
+</table>
